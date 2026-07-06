@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Singleton responsável por gerar moedas aleatoriamente na arena ao longo do tempo.
+/// Singleton responsável por gerar moedas aleatoriamente na arena (plano X/Z) ao longo do tempo.
 /// </summary>
 public class CoinSpawner : MonoBehaviour
 {
@@ -10,8 +10,10 @@ public class CoinSpawner : MonoBehaviour
 
     [Header("Config de spawn")]
     public GameObject coinPrefab;
-    [Tooltip("Raio da arena onde as moedas podem aparecer (arena circular)")]
+    [Tooltip("Raio da arena (no plano X/Z) onde as moedas podem aparecer")]
     public float raioArena = 8f;
+    [Tooltip("Altura (Y) em que as moedas aparecem, deve ser a altura da plataforma")]
+    public float alturaSpawn = 0.5f;
     [Tooltip("Intervalo entre spawns, em segundos")]
     public float intervaloSpawn = 3f;
     [Tooltip("Número máximo de moedas na arena ao mesmo tempo")]
@@ -42,7 +44,8 @@ public class CoinSpawner : MonoBehaviour
 
     private void SpawnMoeda()
     {
-        Vector2 posAleatoria = Random.insideUnitCircle * raioArena;
+        Vector2 circulo = Random.insideUnitCircle * raioArena;
+        Vector3 posAleatoria = new Vector3(circulo.x, alturaSpawn, circulo.y);
         GameObject obj = Instantiate(coinPrefab, posAleatoria, Quaternion.identity);
         Coin coin = obj.GetComponent<Coin>();
         if (coin != null) moedasAtivas.Add(coin);

@@ -4,6 +4,12 @@ using UnityEngine.InputSystem;
 
 public enum PlayerIndex { Player1 = 0, Player2 = 1 }
 
+/// <summary>
+/// MonoBehaviour que controla o comportamento de uma bolinha em jogo (3D).
+/// Recebe um asset de BolinhaData para definir seu funcionamento (status).
+/// Usa o Input System (Action Maps "Player1"/"Player2") via C# events.
+/// Movimento no plano X/Z (visão de cima), gravidade real no eixo Y.
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class BolinhaController : MonoBehaviour
 {

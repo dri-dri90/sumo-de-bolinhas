@@ -3,9 +3,9 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// Singleton da cena de Gameplay. Gerencia rounds, detecta bolinha saindo da arena,
-/// e avisa a UI via eventos (Observer) — a UI não precisa de referência direta a isso,
-/// só se inscreve nos eventos.
+/// Singleton da cena de Gameplay (3D). Gerencia rounds, detecta bolinha caindo/saindo
+/// da arena, e avisa a UI via eventos (Observer) — a UI só se inscreve nos eventos,
+/// sem referência direta a esse script.
 /// </summary>
 public class GameManager : MonoBehaviour
 {
@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour
     public Transform posicaoInicialP2;
 
     [Header("Config da arena")]
-    [Tooltip("Distância do centro (0,0) a partir da qual a bolinha é considerada 'fora'")]
+    [Tooltip("Distância horizontal (X/Z) do centro a partir da qual a bolinha é considerada fora")]
     public float raioLimiteArena = 10f;
+    [Tooltip("Altura Y abaixo da qual a bolinha é considerada 'caiu da plataforma'")]
+    public float alturaQuedaLimite = -3f;
 
     [Tooltip("Nome da cena de vitória, para o SceneManager")]
     public string nomeCenaVitoria = "Vitoria";
@@ -43,7 +45,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Pega as bolinhas escolhidas na tela de seleção (via GameSession persistente)
         if (GameSession.Instance != null)
         {
             bolinhaP1.data = GameSession.Instance.BolinhaP1;
@@ -60,14 +61,20 @@ public class GameManager : MonoBehaviour
     {
         if (!rodadaEmAndamento) return;
 
-        if (bolinhaP1.transform.position.magnitude > raioLimiteArena)
+        if (EstaForaDaArena(bolinhaP1.transform.position))
         {
-            TerminarRound(PlayerIndex.Player2); // P1 caiu, P2 vence o round
+            TerminarRound(PlayerIndex.Player2); // P1 saiu/caiu, P2 vence o round
         }
-        else if (bolinhaP2.transform.position.magnitude > raioLimiteArena)
+        else if (EstaForaDaArena(bolinhaP2.transform.position))
         {
             TerminarRound(PlayerIndex.Player1);
         }
+    }
+
+    private bool EstaForaDaArena(Vector3 posicao)
+    {
+        float distanciaHorizontal = new Vector2(posicao.x, posicao.z).magnitude;
+        return distanciaHorizontal > raioLimiteArena || posicao.y < alturaQuedaLimite;
     }
 
     private void IniciarRound()
@@ -76,8 +83,8 @@ public class GameManager : MonoBehaviour
 
         bolinhaP1.transform.position = posicaoInicialP1.position;
         bolinhaP2.transform.position = posicaoInicialP2.position;
-        bolinhaP1.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-        bolinhaP2.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        bolinhaP1.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+        bolinhaP2.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
 
         bolinhaP1.InicializarComData();
         bolinhaP2.InicializarComData();
