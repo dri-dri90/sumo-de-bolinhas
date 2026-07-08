@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7f57a86d95da548bb4d5161ec5169f, type: 3}
   m_Name: Bolinha4
   m_EditorClassIdentifier: Assembly-CSharp::BolinhaData
-  nomeBolinha: 
+  nomeBolinha: Vidro
   sprite: {fileID: 0}
-  corJogador1: {r: 1, g: 1, b: 1, a: 1}
-  corJogador2: {r: 1, g: 0, b: 0, a: 1}
-  velocidade: 5
-  tamanho: 1
-  massa: 1
-  forcaEmpurrao: 10
-  cooldownAcao: 2
-  massaGanhaPorMoeda: 0.15
-  forcaGanhaPorMoeda: 1.5
-  velocidadePerdidaPorMoeda: 0.2
+  corJogador1: {r: 0.54509807, g: 0.36078432, b: 0.9647059, a: 1}
+  corJogador2: {r: 0.84705883, g: 0.78039217, b: 0.98039216, a: 1}
+  velocidade: 6
+  tamanho: 0.7
+  massa: 0.6
+  forcaEmpurrao: 8
+  cooldownAcao: 1.5
+  massaGanhaPorMoeda: 0.08
+  forcaGanhaPorMoeda: 1
+  velocidadePerdidaPorMoeda: 0.3

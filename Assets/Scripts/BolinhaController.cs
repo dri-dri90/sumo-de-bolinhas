@@ -104,11 +104,11 @@ public class BolinhaController : MonoBehaviour
         cooldownTimer = 0f;
         podeUsarAcao = true;
 
-        var renderer = GetComponent<Renderer>();
-        if (renderer != null)
+        var component = GetComponent<Renderer>();
+        if (component != null)
         {
             // Usa uma instância do material pra não alterar o asset original
-            renderer.material.color = playerIndex == PlayerIndex.Player1 ? data.corJogador1 : data.corJogador2;
+            component.material.color = playerIndex == PlayerIndex.Player1 ? data.corJogador1 : data.corJogador2;
         }
     }
 
@@ -161,7 +161,7 @@ public class BolinhaController : MonoBehaviour
         OnCooldownProgressChanged?.Invoke(0f);
     }
 
-    public void ReceberEmpurrao(Vector3 forca)
+    private void ReceberEmpurrao(Vector3 forca)
     {
         rb.AddForce(forca, ForceMode.Impulse);
     }

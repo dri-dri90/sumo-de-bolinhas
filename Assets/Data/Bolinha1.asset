@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7f57a86d95da548bb4d5161ec5169f, type: 3}
   m_Name: Bolinha1
   m_EditorClassIdentifier: Assembly-CSharp::BolinhaData
-  nomeBolinha: 
+  nomeBolinha: Borracha
   sprite: {fileID: 0}
-  corJogador1: {r: 1, g: 1, b: 1, a: 1}
-  corJogador2: {r: 1, g: 0, b: 0, a: 1}
-  velocidade: 5
-  tamanho: 1
-  massa: 1
-  forcaEmpurrao: 10
-  cooldownAcao: 2
-  massaGanhaPorMoeda: 0.15
-  forcaGanhaPorMoeda: 1.5
-  velocidadePerdidaPorMoeda: 0.2
+  corJogador1: {r: 1, g: 0.23137255, b: 0.1882353, a: 1}
+  corJogador2: {r: 1, g: 0.6156863, b: 0.58431375, a: 1}
+  velocidade: 7
+  tamanho: 0.8
+  massa: 0.7
+  forcaEmpurrao: 6
+  cooldownAcao: 2.5
+  massaGanhaPorMoeda: 0.1
+  forcaGanhaPorMoeda: 1.2
+  velocidadePerdidaPorMoeda: 0.35
