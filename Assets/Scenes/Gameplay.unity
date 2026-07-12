@@ -158,6 +158,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 176177092243363138, guid: 66b984c544f5d82b992f55138955ce0f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c1fb5fa8eb1e5442bcb8da305e0bd1a, type: 2}
     - target: {fileID: 2314964345608878666, guid: 66b984c544f5d82b992f55138955ce0f, type: 3}
       propertyPath: m_Name
       value: Player2
@@ -354,6 +358,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 7149220637435143652, guid: 9669f6fe56ee7ec9b832cbea9c407389, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: dbf23aeb06cd01f4ca9e955917af08d3, type: 2}
     - target: {fileID: 8417047933341296650, guid: 9669f6fe56ee7ec9b832cbea9c407389, type: 3}
       propertyPath: data
       value: 
